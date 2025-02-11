@@ -1,0 +1,5 @@
+apiVersion: v2
+name: postgres
+description: PostgreSQL deployment with local storage
+version: 0.1.0
+appVersion: "14.8"

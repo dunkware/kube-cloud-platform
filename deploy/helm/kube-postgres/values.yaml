@@ -1,0 +1,29 @@
+namespace: postgres
+
+postgresql:
+  image:
+    repository: postgres
+    tag: 14.8
+    pullPolicy: IfNotPresent
+  
+  storage:
+    size: 100Gi
+    storageClass: local-path
+  
+  service:
+    type: NodePort
+    port: 5432
+    nodePort: 30543
+  
+  resources:
+    requests:
+      cpu: "500m"
+      memory: "1Gi"
+    limits:
+      cpu: "2"
+      memory: "4Gi"
+  
+  credentials:
+    postgres_password: "change-me-in-production"
+    postgres_db: "postgresdb"
+    postgres_user: "postgresuser"

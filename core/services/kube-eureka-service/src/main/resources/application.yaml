@@ -1,0 +1,49 @@
+# cr-eureka-service/src/main/resources/application.yml
+server:
+  port: 8761
+
+spring:
+  application:
+    name: cr-eureka-service
+  freemarker:
+    template-loader-path: classpath:/templates/
+    prefer-file-system-access: false
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    # Don't register itself as a client
+    registerWithEureka: false
+    # Don't fetch registry
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    # Enable self-preservation mode
+    enableSelfPreservation: true
+    # How often to run the eviction task (in milliseconds)
+    evictionIntervalTimerInMs: 1000
+    # Response cache update interval
+    responseCacheUpdateIntervalMs: 1000
+    # Response cache auto expiration
+    responseCacheAutoExpirationInSeconds: 180
+    # UI related settings
+    renewalPercentThreshold: 0.85
+    renewalThresholdUpdateIntervalMs: 900000
+    waitTimeInMsWhenSyncEmpty: 0
+
+logging:
+  level:
+    com.netflix.eureka: WARN
+    com.netflix.discovery: WARN
+
+# Actuator endpoints for monitoring
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

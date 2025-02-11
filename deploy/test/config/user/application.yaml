@@ -1,0 +1,51 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: cr-user-service
+  datasource:
+    url: jdbc:postgresql://testrock1.dunkware.net:30545/mvp_iam
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: none  # Changed from update to validate since Flyway will handle schema updates
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+    schemas: public
+    validate-on-migrate: false  # Change this to false
+  sql:
+    init:
+      mode: always
+
+eureka:
+  instance:
+    preferIpAddress: true
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${server.port}
+    hostname: ${spring.application.name}.mvp-test-root.svc.cluster.local
+  client:
+    serviceUrl:
+      defaultZone: http://mvp-test-eureka-service.mvp-test-root.svc.cluster.local:8761/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+
+
+logging:
+  level:
+    root: INFO
+    org.springframework: INFO
+    org.flywaydb: DEBUG  # Added to see Flyway migration details
+
+dunkware:
+  security:
+    permitAll:
+      - /users/validate
+      - /actuator/**

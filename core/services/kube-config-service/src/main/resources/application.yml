@@ -1,0 +1,31 @@
+server:
+  port: 8070
+
+spring:
+  application:
+    name: cr-config-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:dunkware/lastconfig.git
+          search-paths:
+            - shared                    # Shared configurations
+            - services/*/{application}  # Service-specific nested configs
+            - services/{application}    # Service-specific direct configs
+          default-label: main
+          ignore-local-ssh-settings: true
+          private-key: |
+            ${GIT_PRIVATE_KEY}
+          strict-host-key-checking: false
+  security:
+    user:
+      name: admin
+      password: admin
+      roles: ADMIN
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

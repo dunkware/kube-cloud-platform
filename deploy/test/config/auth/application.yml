@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: cr-auth-service
+
+server:
+  port: 8025
+
+eureka:
+  instance:
+    preferIpAddress: true
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${server.port}
+    hostname: ${spring.application.name}.mvp-test-root.svc.cluster.local
+  client:
+    serviceUrl:
+      defaultZone: http://mvp-test-eureka-service.mvp-test-root.svc.cluster.local:8761/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+
+dunkware:
+  security:
+    permitAll:
+      - /login
+      - /validate
+      - /actuator/**
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.cloud.gateway.handler: TRACE
+    org.springframework.cloud.gateway.filter: TRACE
+    org.springframework.cloud.gateway.route: TRACE
+    org.springframework.cloud.gateway.handler.RoutePredicateHandlerMapping: TRACE
+    org.springframework.cloud.gateway.filter.GlobalFilter: TRACE

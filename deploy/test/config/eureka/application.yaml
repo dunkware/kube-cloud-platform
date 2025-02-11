@@ -1,0 +1,31 @@
+server:
+  port: 8761    # Make sure this is 8761 not 8080
+spring:
+  application:
+    name: cr-eureka-service
+  freemarker:
+    template-loader-path: classpath:/templates/
+    prefer-file-system-access: false
+eureka:
+  instance:
+    hostname: dunk-infra-eureka.test-infra.svc.cluster.local
+    preferIpAddress: true
+    nonSecurePort: 8761
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl: 
+      defaultZone: http://dunk-infra-eureka.test-infra.svc.cluster.local:8761/eureka/
+  server:
+    enableSelfPreservation: true
+    evictionIntervalTimerInMs: 1000
+    responseCacheUpdateIntervalMs: 1000
+    responseCacheAutoExpirationInSeconds: 180
+    renewalPercentThreshold: 0.85
+    renewalThresholdUpdateIntervalMs: 900000
+    waitTimeInMsWhenSyncEmpty: 0
+
+logging:
+  level:
+    com.netflix.eureka: INFO      # Changed to INFO for more visibility
+    com.netflix.discovery: INFO   # Changed to INFO for more visibility

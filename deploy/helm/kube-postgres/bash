@@ -1,0 +1,4 @@
+# Delete by force if it exists anywhere
+for ns in $(kubectl get ns -o name); do
+  kubectl delete deployment postgres -n ${ns#namespace/} --force --grace-period=0 2>/dev/null || true
+done

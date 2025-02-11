@@ -1,0 +1,56 @@
+<configuration scan="true">
+
+	<property name="PATTERN"
+		value="%d{HH:mm:ss.SSS} %-5level %logger{0} - %msg%n" />
+
+	<appender name="CONSOLE"
+		class="ch.qos.logback.core.ConsoleAppender">
+
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	
+	  	<appender name="FLUENT"
+		class="ch.qos.logback.more.appenders.DataFluentAppender">
+		<tag>myrock</tag>
+		<label>cluster</label>
+		<remoteHost>192.168.23.107</remoteHost>
+	<port>32759</port>
+		<additionalField>
+			<key>node</key>
+			<value>gateway</value>
+		</additionalField>
+	</appender>
+	
+	
+
+	
+
+
+
+	<root level="info">
+		<appender-ref ref="CONSOLE" additivity="false" />
+		
+	</root>
+
+
+	
+	<logger name="org.springframework.cloud" level="info" additivity="false">
+		<appender-ref ref="CONSOLE" additivity="false" />
+		
+	</logger>
+
+	<logger name="com.dunkware" level="info" additivity="false">
+		<appender-ref ref="CONSOLE" additivity="false" />
+		<appender-ref ref="FLUENT" />
+	</logger>
+	
+	
+	
+
+
+
+</configuration>
