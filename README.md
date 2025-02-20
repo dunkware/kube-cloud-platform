@@ -1,18 +1,7 @@
 # 🌐  Kube Cloud   
 
-🚀 A cloud-native **abstraction layer for Kubernetes deployments**, integrating **identity management, authorization, dynamic API gateways, and service discovery**—all designed for **seamless cloud service orchestration**.
+🚀 I'm working more with Kubernetes and building a abstract set of REST services for interacting with the cluster in more abstract ways, this is also powering a web app in a different project. 
 
-## 📌 **What is This?**
-A **unified platform** that simplifies Kubernetes **service deployment and management**, making it feel like an **AWS-like console** where services are easily deployed and monitored.
-
-### **🔹 Core Features**
-- **🔑 Identity Management** – Built-in authentication and authorization services.
-- **🛡 Authorization Token Service** – Secure access control for microservices.
-- **🔀 API Gateway** – Dynamic route management for seamless service interactions.
-- **📡 Service Discovery (Eureka)** – Automatic service registration and discovery.
-- **🛠 Helm-Based Deployments** – Pre-configured Helm charts for effortless scaling.
-
----
 
 ## **⚡ Why This Matters**
 Kubernetes is powerful, but **operating and deploying services in a cloud-native environment is complex**.  
@@ -24,12 +13,11 @@ This platform is designed to **reduce operational friction** and provide:
 ✅ **API Gateway for Dynamic Routing** – Easily connect and manage microservices.  
 ✅ **Cloud-Native Abstraction** – A structured way to manage distributed workloads.  
 
-Instead of **manually configuring Helm charts, writing Kubernetes manifests, and handling service dependencies**, this platform **abstracts deployment complexity** into a **manageable, scalable API-driven system**.
 
 ---
 
-## **🚀 Growing Vision**
-The long-term goal is to **create an AWS-like experience for Kubernetes**, making it easier to:  
+## **🚀 Screensdhot**
+![Using the Metrics API I created. ](screenshot1.png)
 
 ✅ **Deploy managed services like Kafka, Redis, MySQL, Elasticsearch**  
 ✅ **Scale infrastructure dynamically with built-in auto-healing**  
