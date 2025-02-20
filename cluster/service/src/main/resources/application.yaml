@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: kube-cluster-service
+
+kubernetes:
+  config:
+    file: ${KUBECONFIG:/Users/hattrick/kube/testrock/config}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name}
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+server:
+  port: 8045
